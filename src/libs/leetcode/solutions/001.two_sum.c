@@ -35,7 +35,7 @@ static int _cmp(const void* a, const void* b)
 
 int* two_sum(int arr[], int cnt, int target)
 {
-    int i, j;
+    int i, j; int* ret = 0;
 
     if(cnt < 2)
         return 0;
@@ -77,7 +77,7 @@ int* two_sum(int arr[], int cnt, int target)
             else
             {
                 //! ok, found it!!!
-                int * ret = malloc(2 * sizeof(int));
+                ret = malloc(2 * sizeof(int));
 
                 ret[0] = objs[i].idx;
                 ret[1] = objs[j].idx;
@@ -87,5 +87,7 @@ int* two_sum(int arr[], int cnt, int target)
         }
     }
 
-    return 0;
+    free(objs);
+
+    return ret;
 }
