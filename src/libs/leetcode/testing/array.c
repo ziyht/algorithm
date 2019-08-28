@@ -17,27 +17,30 @@ static int test_two_sum()
         2, 1, 4, 3, 5, 6, 9, 7, 8
     };
 
+    int out_num;
+
     {
-        int *ret = two_sum(arr, 2, 3);
+
+        int *ret = two_sum(arr, 2, 3, &out_num);
         eexpect_1(ret);
         eexpect_eq(arr[ret[0]] + arr[ret[1]], 3);
         free(ret);
     }
 
     {
-        int *ret = two_sum(arr, 2, 4);
+        int *ret = two_sum(arr, 2, 4, &out_num);
         eexpect_0(ret);
     }
 
     {
-        int *ret = two_sum(arr, 4, 7);
+        int *ret = two_sum(arr, 4, 7, &out_num);
         eexpect_1(ret);
         eexpect_eq(arr[ret[0]] + arr[ret[1]], 7);
         free(ret);
     }
 
     {
-        int *ret = two_sum(arr, 9, 16);
+        int *ret = two_sum(arr, 9, 16, &out_num);
         eexpect_1(ret);
         eexpect_eq(arr[ret[0]] + arr[ret[1]], 16);
         free(ret);
