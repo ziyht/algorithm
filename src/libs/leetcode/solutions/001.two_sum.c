@@ -33,9 +33,11 @@ static int _cmp(const void* a, const void* b)
     return ((struct obj_s*)a)->val - ((struct obj_s*)b)->val;
 }
 
-int* two_sum(int arr[], int cnt, int target)
+int* two_sum(int arr[], int cnt, int target, int* returnSize)
 {
     int i, j; int* ret = 0;
+
+    *returnSize = 0;
 
     if(cnt < 2)
         return 0;
@@ -68,7 +70,7 @@ int* two_sum(int arr[], int cnt, int target)
                 //! so we need to move i -> j
                 while(++i < j && objs[i].val == objs[i - 1].val);
             }
-            else if(need > objs[j].val)
+            else if(need < objs[j].val)
             {
                 //! the needed val is less than max number in arr
                 //! so we need to move j -> i
@@ -82,7 +84,9 @@ int* two_sum(int arr[], int cnt, int target)
                 ret[0] = objs[i].idx;
                 ret[1] = objs[j].idx;
 
-                return ret;
+                *returnSize = 2;
+
+                break;
             }
         }
     }
