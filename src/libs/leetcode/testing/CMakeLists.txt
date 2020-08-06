@@ -31,9 +31,13 @@ cmake_minimum_required(VERSION 2.8.1)
 #
 
 ETestAddTestSet(Array
-
-    CASES   array.c
-
-    SRCS    etest.h
+    # CASES 中的文件不存在时会自动创建
+    CASES   t0001.c
+            t0002.c
+            t0005.c
+            t0007.c
+            t0008.c
+            t0009.c
+            t0010.c
  )
 

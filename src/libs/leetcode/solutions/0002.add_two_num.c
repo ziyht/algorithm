@@ -23,11 +23,9 @@
 
 #include "leetcode.h"
 
-#define _ln_next(l) (l)->next
-#define _ln_val(l)  (l)->val
-
 #define _ln_new()    malloc(sizeof(ListNode_t))
 
+//! 创建一个新节点到末尾，并设置值
 #define _ln_cat(n, v)       \
 do{                         \
     n->next = _ln_new();    \
@@ -40,23 +38,24 @@ ListNode_t* addTwoNumbers(ListNode_t* l1, ListNode_t* l2)
     int sum;
     int in = 0;
 
+    //! 在 栈 中创建一个 head， 方便后续逻辑处理
     ListNode_t  head = {0, 0};
     ListNode_t* cur  = &head;
 
+    //! step1: 处理 l1 和 l2 同时 有效 的情况
     while(l1 && l2)
     {
-        sum  = _ln_val(l1) + _ln_val(l2) + in;
+        sum  = l1->val + l2->val + in;
         in   = sum > 9;
         sum %= 10;
 
-        cur->next = _ln_new();
-        cur       = cur->next;
-        cur->val  = sum;
+        _ln_cat(cur, sum);
 
         l1 = l1->next;
         l2 = l2->next;
     }
 
+    //! step2.1: 处理 l1 和 l2 同时 无效 的情况
     if(!l1 && !l2)
     {
         if(in)
@@ -64,6 +63,8 @@ ListNode_t* addTwoNumbers(ListNode_t* l1, ListNode_t* l2)
             _ln_cat(cur, 1);
         }
     }
+
+    //! step2.2: 处理 只剩余 一个 有效链表的 情况
     else
     {
         if(!l1) l1 = l2;

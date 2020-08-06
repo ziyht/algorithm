@@ -4,7 +4,7 @@
 
 #include "stdlib.h"
 
-#include "./etest.h"
+#include "etest.h"
 
 #include "leetcode.h"
 
@@ -51,7 +51,7 @@ static int test_two_sum()
 
 
 
-int array(int argc, char* argv[])
+int t0001(int argc, char* argv[])
 {
     (void)argc; (void)argv;
 

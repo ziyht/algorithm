@@ -40,4 +40,8 @@ target_wrapper.*
 *.qmlproject.user.*
 
 # QtCreator CMake
-CMakeLists.txt.user*
+CMakeLists.txt.user
+CMakeLists.txt.user.*
+
+# Mac temp files
+.DS_Store
