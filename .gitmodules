@@ -1,0 +1,3 @@
+[submodule "emake"]
+	path = emake
+	url = https://github.com/ziyht/emake.git
